@@ -1,0 +1,80 @@
+1)what is conditional statement?
+ans)It allows us to check a condition and execute certain parts of code depending on whether the condition is true or false. Such statements are called conditional statement.
+
+
+2)Write the syntax of switch..case statement.
+ans)switch(expression){    
+case value1:  .............    
+ break;  
+case value2:  ...............
+ break;  
+......    
+    default:     
+ code to be executed if all cases are not matched;    
+}    
+
+
+3)Write the difference between break and continue statement
+ans)The break keyword is used to breaks(stopping) a loop execution, which may be a for loop, while loop, do while or for each loop.
+The continue keyword is used to skip the particular recursion only in a loop execution, which may be a for loop, while loop, do while or for each loop.
+
+
+4)What is looping statement?
+ans)It is a feature which facilitates the execution of a set of instructions/functions repeatedly while some condition evaluates to true.
+
+
+5)Write the difference between while and do..while statement.
+ans)In Java While loop, the condition is tested at the beginning of the loop, and if the condition is True, then only statements in that loop will be executed. So, the While loop executes the code block only if the condition is True.
+In Java Do While loop, the condition is tested at the end of the loop. So, the Do While executes the statements in the code block at least once even if the condition Fails.
+
+
+6)What is array? How it is created?
+ans)Java array is an object which contains elements of a similar data type.It is a data structure where we store similar elements. We can store only a fixed set of elements in a Java array.
+
+
+7)What is class?
+ans)CLASS are a blueprint or a set of instructions to build a specific type of object. It is a basic concept of Object-Oriented Programming which revolve around the real-life entities. Class in Java determines how an object will behave and what the object will contain.
+
+
+8)What is constructor?
+ans)Constructor is a block of code that initializes the newly created object. A constructor resembles an instance method in java but it’s not a method as it doesn’t have a return type. In short constructor and method are different.People often refer constructor as special type of method in Java.
+
+
+9)What is the use of copy constructor?
+ans)A copy constructor in a Java class is a constructor that creates an object using another object of the same Java class.
+     That's helpful when we want to copy a complex object that has several fields, or when we want to make a deep copy of an existing object.
+
+
+10)What is the use of this keyword?
+ans)Here is given the 6 usage of java this keyword.
+1.this can be used to refer current class instance variable.
+2.this can be used to invoke current class method (implicitly)
+3.this() can be used to invoke current class constructor.
+4.this can be passed as an argument in the method call.
+5.this can be passed as argument in the constructor call.
+6.this can be used to return the current class instance from the method.
+
+
+11)What is method overloading?
+ans)Method Overloading is a feature that allows a class to have more than one method having the same name, if their argument lists are different.
+
+
+12)What is static variable?
+ans)If you declare any variable as static, it is known as a static variable.The static variable can be used to refer to the common property of all objects (which is not unique for each object), for example, the company name of employees, college name of students, etc.The static variable gets memory only once in the class area at the time of class loading.
+
+
+13)What is access modifier?
+ans)In Java, access modifiers are used to set the accessibility (visibility) of classes, interfaces, variables, methods, constructors, data members, and the setter methods.
+
+
+14)Write the difference between instance and static methods.
+ans)1.Instance method are methods which require an object of its class to be created before it can be called. Static methods are the methods in Java that can be called without creating an object of class.
+2.Static method is declared with static keyword. Instance method is not with static keyword.
+3.Static method means which will exist as a single copy for a class. But instance methods exist as multiple copies depending on the number of instances created for that class.
+4.Static methods can be invoked by using class reference. Instance or non static methods are invoked by using object reference.
+5.Static methods can’t access instance methods and instance variables directly. Instance method can access static variables and static methods directly.
+
+
+15)What is object? How it is created?
+ans)A class provides the blueprints for objects. So basically, an object is created from a class. In Java, the new keyword is used to create new objects.
+         Object obj=new Object();
