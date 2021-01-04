@@ -1,0 +1,472 @@
+week-3 part2-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.Develop a Angular Project that show cases One way and two way data binding (Property binding and Event Binding).
+-->
+A)one way binding:-
+a)property binding-
+
+app.component.html:--
+
+<h2>property binding-Example</h2>
+  <img [src]="imagePath" class="image-adjustment"/>
+  <br>
+
+app.component.ts:---
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = "Angular property binding";
+ constructor(){ }
+ imagePath: string='C:\Users\peka poojitha\Downloads\download.png';
+ ngOnInit(){ }
+ } 
+
+b)event binding-
+ 
+app.component.html:--
+ 
+<h2>event binding-Example</h2>
+  <h1>{{title}}</h1>
+  <button (click)="changeMyTitle()">tile is changed on click of the button</button>
+
+app.component.ts:--
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = "Angular oneway binding";
+ ngOnInit(){ 
+ }
+ changeMyTitle(){
+  this.title='event binding';
+ }
+ } 
+
+B)two way binding:---
+
+app.module.ts:--
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { EventbindComponent } from './eventbind/eventbind.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    EventbindComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+app.component.html:---
+
+<h1>two way binding</h1>
+  <input type= "text" [(ngModel)]="userName"/>
+  <br>
+  <h4> welcome: {{userName}}</h4>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Develop a Angular Project that show cases the following Event binding :- a) Text Box’s key entry c) Text Box Key Enter d) Text Area Keyup +Shift +A b) Button on Click
+
+a)Text Box’s key entry
+-------
+app.component.html:-------
+
+<div>
+    name:<input (keyup)="onKey($event)" placeholder="Enter Text Here">
+    <br>
+    <p>the text you've given is:{{name}}</p>
+   </div>
+
+app.component.ts:-------
+
+import { Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="angular app";
+  constructor() { }
+  ngOnInit(): void {
+  }
+  name:any='';
+  onKey(event:any){
+  this.name=event.target.value;
+  }
+   }
+
+
+b) Button on Click
+--------
+app.component.html:---
+
+<div>
+    name:<input (keyup)="onKey($event)" placeholder="Enter Text Here">
+    <br>
+    <p>the text you've given is:{{name}}</p>
+   </div>
+   <div>
+    <button class="btn btnwarning" type="button" (click)="onSubmit()">submit</button>
+   </div>
+
+app.component.ts:-----
+
+import { Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="angular app";
+  constructor() { }
+  ngOnInit(): void {
+  }
+  name:any='';
+  onKey(event:any){
+  this.name=event.target.value;
+  }
+  onSubmit(){
+    alert("network error, please try again");
+    }
+   }
+
+
+c)Text Box Key Enter
+-------
+
+app.component.html:-----
+
+ <div>
+    <input #switch (keyup.enter)="onEnter(switch.value)" placeholder="Enter Text">
+    <br>
+    <p>value is: {{value}}</p>
+   </div>
+   
+app.component.ts:----
+
+import { Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="angular app";
+  constructor() { }
+  ngOnInit(): void {
+  }
+  value:any='';
+ onEnter(value:string){
+ this.value=value;
+ }
+
+   }
+
+
+d)Text Area Keyup +Shift +A
+-----------
+app.component.html:-----
+<div>
+    <input #box (keydown.Shift.A)="onEnterShift(box.value)" placeholder="Enter Text Here">
+    <br>
+    <p>This is box keyup+shift+a is {{val}}</p>
+   </div>
+
+app.component.ts:-----
+
+import { Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="angular app";
+  constructor() { }
+  ngOnInit(): void {
+  }
+  value:any='';
+ onEnter(value:string){
+ this.value=value;
+ }
+
+   }
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Develop a Angular project that uses template reference variable for text box, textarea and select drop down control
+-----------
+app.component.html:----
+
+<select #myColor (change) = "setData(myColor.value)">
+    <option *ngFor = "let color of colors">
+      {{color}}
+    </option>
+  </select>
+  
+  <p [style.color] = "myColor.value"> Hello World!</p>
+
+
+app.component.ts:----
+
+import { Component} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{
+  title="drop-down"
+  colors = ['RED', 'CYAN', 'BLUE'];
+	getData(mob : number, stat : string, cnt: string) {
+		console.log(mob);
+		console.log(stat);
+		console.log(cnt);
+	}
+	setData(val) {
+	    console.log(val);
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Develop a Angular Project with one child control. And pass data from parentcontrol (ex app.component.ts) to the child data via property binding
+
+app.component.html:----
+----
+<app-child [recipeItem]="item"></app-child>
+
+app.component.ts:------
+------
+import { Component} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{
+  title="parent-child communication"
+  item = 'Tacos';
+
+}
+
+child.component.html:----
+------
+<p>child works!</p>
+<h1>I love {{ recipeItem }}</h1>
+
+child.component.ts:---
+---------
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
+})
+export class ChildComponent {
+  @Input() 
+  recipeItem: string;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Develop a Angular Project that displays a list of Products details (id,name,description,cost) in a grid format. The solution should be able to display unique identifier for each record, and able to show even and odd record with efficient data update technique.
+
+app.component.html:----
+-----
+<div>
+    <h1 class="text-center">parent component</h1>
+  </div>
+  <div class="container mt-5">
+    <table class="table">
+    <tr>
+    <th>ID</th>
+    <th>Product</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Even</th>
+    <th>Odd</th>
+    </tr>
+    <tr *ngFor="let person of persons;even as e;odd as o">
+    <td>{{person.Id}}</td>
+    <td>{{person.Product}}</td>
+    <td>{{person.Description}}</td>
+    <td>{{person.Cost}}</td>
+    <td>{{e}}</td>
+    <td>{{o}}</td>
+    </tr>
+    </table>
+   <div class="row">
+    <div class="col">
+    <input type="number" class="formcontrol" placeholder="Id" [(ngModel)]="Id">
+    </div>
+    <div class="col">
+    <input type="text" class="formcontrol" placeholder="Product Name" [(ngModel)]="Product">
+    </div>
+    <div class="col">
+    <input type="text" class="formcontrol" placeholder="Description" [(ngModel)]="Description">
+    </div>
+    <div class="col">
+    <input type="text" class="formcontrol" placeholder="Cost" [(ngModel)]="Cost">
+    </div>
+    <div class="col">
+    <button class="btn btn-success btnblock" (click)="add(Id,Product,Description,Cost)">Add</button>
+    </div>
+   </div>
+   </div>
+
+app.component.ts:---
+------
+
+import { Component, Input, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="gridformat"
+  constructor(){}
+ persons = [
+ ];
+ Id:number;
+ Product: String;
+ Description:String;
+ Cost:String;
+
+ add(Id,Product,Description,Cost){
+ this.persons.push({
+ "Id":Id,
+ "Product": Product,
+ "Description":Description,
+ "Cost":Cost
+
+ });
+ // resetting the input field
+
+ this.Id = undefined;
+ this.Product = "";
+ this.Description="";
+ this.Cost="";
+ }
+ ngOnInit(): void {
+
+ }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Develop a Angular Project that displays a list of countries(ex India.Singapore,USA,UK) in a drop down, based on the selected country we need to display specific contents to the user. If India is selected, the page should display a section asking the user to enter the name and aadhaar number, if US is selected the page should display a section asking the user to enter SSN and Passport number, in case of UK, the user should see the section to enter only the password.
+
+app.component.html:-----
+-------
+<div class="container p-20">
+    <h3>Please select the country:</h3>
+    <select [(ngModel)]="k">
+    <option *ngFor="let cnt of countries" [value]="cnt.Id">{{cnt.Country}}</option>
+    </select>
+    </div>
+    <br>
+    <div class="container">
+    <div [ngSwitch]="k">
+    <div *ngSwitchCase="1">
+    <div class="container">
+    <div>
+    <label>Enter the name:</label>
+    <input type="text" class="form-control" placeholder="Username">
+    </div>
+    <div>
+    <label>Enter the Aadhar number:</label>
+    <input type="text" class="form-control" placeholder="Aadhar">
+    </div>
+    </div>
+    </div>
+    <div *ngSwitchCase="2">
+    <div class="container">
+    <div>
+    <label>Enter the SSN number:</label>
+    <input type="number" class="form-control" placeholder="SSN number">
+    </div>
+    <div>
+    <label>Enter the passport number:</label>
+    <input type="number" class="formcontrol" placeholder="Passport number">
+    </div>
+    </div>
+    </div>
+    <div *ngSwitchCase="3">
+    <div class="container">
+    <div>
+    <label>Enter the Password:</label>
+    <input type="password" class="form-control" placeholder="Password">
+    </div>
+    </div>
+    </div>
+    </div>
+
+app.component.ts:------
+------
+
+import { Component, Input, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit{
+  title="gridformat"
+  constructor(){}
+ k:number=0
+ countries=[
+ {Id:1,Country:"India"},
+ {Id:2,Country:"US"},
+ {Id:3,Country:"UK"},
+]
+ ngOnInit(): void {
+
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
